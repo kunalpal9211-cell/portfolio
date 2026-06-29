@@ -1,0 +1,174 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.hero-content h1 {
+  margin: 18px 0 28px;
+}
+
+.hero-content p {
+  max-width: 650px;
+}
+
+.hero-tag {
+  display: inline-flex;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.04);
+  color: #d8d8d8;
+  font-size: .95rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 18px;
+  margin-top: 42px;
+}
+
+.hero-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 45px;
+}
+
+.hero-socials a {
+  color: #8b8b8b;
+  transition: .3s;
+}
+
+.hero-socials a:hover {
+  color: white;
+}
+
+.hero-card {
+  padding: 35px;
+}
+
+.card-label {
+  color: #9d9d9d;
+  font-size: .9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.hero-card h3 {
+  margin: 15px 0;
+}
+
+.hero-card p {
+  margin-bottom: 35px;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.hero-stats h2 {
+  font-size: 2rem;
+}
+
+.hero-stats span {
+  color: #9d9d9d;
+  font-size: .9rem;
+}
+
+.hero-blur {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  pointer-events: none;
+}
+
+.hero-blur-1 {
+  width: 320px;
+  height: 320px;
+  background: rgba(255,255,255,.08);
+  top: -100px;
+  left: -80px;
+}
+
+.hero-blur-2 {
+  width: 320px;
+  height: 320px;
+  background: rgba(255,255,255,.06);
+  right: -120px;
+  bottom: -120px;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.scroll-indicator span {
+  width: 24px;
+  height: 42px;
+  border: 2px solid rgba(255,255,255,.3);
+  border-radius: 30px;
+  display: block;
+  position: relative;
+}
+
+.scroll-indicator span::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  transform: translateX(-50%);
+  animation: scroll 1.8s infinite;
+}
+
+@keyframes scroll {
+  0% {
+    opacity: 0;
+    top: 8px;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    top: 22px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: 100px;
+  }
+
+  .hero-buttons,
+  .hero-socials,
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .hero-card {
+    margin-top: 20px;
+  }
+}

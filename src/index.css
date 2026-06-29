@@ -1,12 +1,379 @@
-@import "tailwindcss";
+/* ===========================================
+   GOOGLE FONT
+=========================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+
+/* ===========================================
+   RESET
+=========================================== */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  background: #0f0f0f;
+  font-family: "Inter", sans-serif;
+  background: #050505;
+  color: #ffffff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+/* ===========================================
+   VARIABLES
+=========================================== */
+
+:root {
+  --bg: #050505;
+  --bg-secondary: #0b0b0b;
+  --surface: #101010;
+  --surface-light: #161616;
+
+  --border: rgba(255,255,255,0.08);
+
+  --text: #ffffff;
+  --text-light: #cfcfcf;
+  --text-muted: #8c8c8c;
+
+  --primary: #ffffff;
+  --secondary: #888888;
+
+  --gradient:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #bdbdbd 100%
+    );
+
+  --shadow:
+    0 10px 40px rgba(0,0,0,.35);
+
+  --radius:18px;
+
+  --container:1200px;
+
+  --transition:.3s ease;
+}
+
+
+/* ===========================================
+   GLOBAL ELEMENTS
+=========================================== */
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 100px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+
+/* ===========================================
+   TYPOGRAPHY
+=========================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.1;
+  letter-spacing: -.03em;
+}
+
+h1 {
+  font-size: clamp(3rem,8vw,6rem);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(2rem,5vw,3.8rem);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+p {
+  color: var(--text-light);
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+
+/* ===========================================
+   COMMON LAYOUT
+=========================================== */
+
+.container {
+  width: min(var(--container),92%);
+  margin: auto;
+}
+
+.section {
+  padding: 120px 0;
+}
+
+.section-title {
+  font-size: clamp(2rem,5vw,3.5rem);
+  margin-bottom: 20px;
+}
+
+.section-subtitle {
+  max-width: 700px;
+  color: var(--text-muted);
+  margin-bottom: 60px;
+}
+
+
+/* ===========================================
+   BUTTONS
+=========================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .7rem;
+
+  padding: 14px 26px;
+
+  border-radius: 999px;
+
+  transition: var(--transition);
+
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: white;
+  color: black;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+}
+
+.btn-outline {
+  border: 1px solid var(--border);
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: #121212;
+}
+
+
+/* ===========================================
+   CARD
+=========================================== */
+
+.card {
+  background: rgba(255,255,255,.03);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  backdrop-filter: blur(16px);
+
+  transition: var(--transition);
+
+  box-shadow: var(--shadow);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255,255,255,.16);
+}
+
+
+/* ===========================================
+   GRADIENT TEXT
+=========================================== */
+
+.gradient-text {
+  background: var(--gradient);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* ===========================================
+   BACKGROUND EFFECTS
+=========================================== */
+
+body::before {
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(255,255,255,.06),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(255,255,255,.04),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(255,255,255,.05),
+      transparent 35%
+    );
+
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.03) 1px,
+      transparent 1px
+    );
+
+  background-size: 50px 50px;
+
+  opacity: .2;
+
+  pointer-events: none;
+
+  z-index: -3;
+}
+
+
+/* ===========================================
+   SELECTION
+=========================================== */
+
+::selection {
+  background: white;
+  color: black;
+}
+
+
+/* ===========================================
+   ANIMATIONS
+=========================================== */
+
+.fade-up {
+  animation: fadeUp .8s ease forwards;
+}
+
+@keyframes fadeUp {
+
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* ===========================================
+   RESPONSIVE
+=========================================== */
+
+@media (max-width:992px){
+
+.section{
+    padding:90px 0;
+}
+
+}
+
+@media (max-width:768px){
+
+.container{
+    width:94%;
+}
+
+p{
+    font-size:1rem;
+}
+
+.section-title{
+    margin-bottom:16px;
+}
+
+.section-subtitle{
+    margin-bottom:40px;
+}
+
 }
