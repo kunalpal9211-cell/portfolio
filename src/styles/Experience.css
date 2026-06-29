@@ -1,0 +1,64 @@
+.timeline{
+    position:relative;
+    margin-top:70px;
+    padding-left:40px;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:12px;
+    top:0;
+    bottom:0;
+    width:2px;
+    background:rgba(255,255,255,.08);
+}
+
+.timeline-item{
+    position:relative;
+    margin-bottom:45px;
+}
+
+.timeline-dot{
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:white;
+    position:absolute;
+    left:-37px;
+    top:28px;
+    box-shadow:0 0 25px rgba(255,255,255,.4);
+}
+
+.timeline-card{
+    padding:28px;
+}
+
+.timeline-year{
+    color:#8b8b8b;
+    font-size:.9rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.timeline-card h3{
+    margin:12px 0 6px;
+}
+
+.timeline-card h4{
+    color:#bdbdbd;
+    margin-bottom:18px;
+    font-weight:500;
+}
+
+@media(max-width:768px){
+
+.timeline{
+    padding-left:25px;
+}
+
+.timeline-dot{
+    left:-22px;
+}
+
+}
