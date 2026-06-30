@@ -8,6 +8,8 @@ import Projects from "./sections/Projects";
 import Footer from "./components/layout/Footer";
 import Skills from "./sections/Skills";
 import Contact from "./sections/Contact";
+import ScrollProgress from "./components/common/ScrollProgress";
+import Aurora from "./components/common/Aurora";
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
         <Projects/>
         <Experience/>
         <Contact />
+        <ScrollProgress />
+        <Aurora />
+
       </main>
 
       <Footer />

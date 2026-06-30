@@ -1,10 +1,13 @@
 const experience = [
   {
-    duration: "2023 - Present",
-    title: "B.Tech Computer Science",
-    company: "University",
+    year: "2024 – 2028",
+
+    title: "B.Tech Electrical Engineering",
+
+    company: "Delhi Technological University",
+
     description:
-      "Learning software engineering, algorithms, operating systems, databases and modern web development while building practical full-stack applications.",
+      "Pursuing a Bachelor's degree in Electrical Engineering while building a strong foundation in software development, data structures & algorithms, operating systems, databases, and full-stack web development through practical projects.",
   },
   {
     duration: "2024",

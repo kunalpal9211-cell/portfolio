@@ -1,37 +1,36 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-// Navbar.jsx
+import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
+import portfolio from "../../data/portfolio";
 import "../../styles/Navbar.css";
 
 const navLinks = [
   { title: "About", id: "about" },
   { title: "Skills", id: "skills" },
   { title: "Projects", id: "projects" },
-  { title: "Experience", id: "experience" },
+  { title: "Journey", id: "experience" },
   { title: "Contact", id: "contact" },
 ];
 
 function Navbar() {
   const [active, setActive] = useState("hero");
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const sections = ["hero", ...navLinks.map((item) => item.id)];
 
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+      setScrolled(window.scrollY > 20);
 
       let current = "hero";
 
       sections.forEach((section) => {
-        const element = document.getElementById(section);
+        const el = document.getElementById(section);
 
-        if (!element) return;
+        if (!el) return;
 
-        const top = element.offsetTop - 120;
-
-        if (window.scrollY >= top) {
+        if (window.scrollY >= el.offsetTop - 120) {
           current = section;
         }
       });
@@ -46,71 +45,98 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id) => {
-    const section = document.getElementById(id);
+  const scrollTo = (id) => {
+    const element = document.getElementById(id);
 
-    if (section) {
-      section.scrollIntoView({
-        behavior: "smooth",
-      });
-    }
+    if (!element) return;
 
-    setMobileOpen(false);
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+    setMenuOpen(false);
   };
 
   return (
     <>
       <motion.header
         className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}
-        initial={{ y: -80 }}
+        initial={{ y: -70 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
       >
         <div className="container navbar-container">
           <button
             className="logo"
-            onClick={() => scrollToSection("hero")}
+            onClick={() => scrollTo("hero")}
           >
-            Kunal
+            {portfolio.name}
           </button>
 
           <nav className="desktop-nav">
             {navLinks.map((link) => (
               <button
                 key={link.id}
+                onClick={() => scrollTo(link.id)}
                 className={active === link.id ? "nav-active" : ""}
-                onClick={() => scrollToSection(link.id)}
               >
                 {link.title}
               </button>
             ))}
           </nav>
 
+          <a
+            href={portfolio.resume}
+            target="_blank"
+            rel="noreferrer"
+            className="resume-btn"
+          >
+            Resume
+          </a>
+
           <button
             className="menu-btn"
-            onClick={() => setMobileOpen(!mobileOpen)}
+            onClick={() => setMenuOpen(!menuOpen)}
           >
-            {mobileOpen ? "✕" : "☰"}
+            {menuOpen ? <HiX /> : <HiOutlineMenuAlt3 />}
           </button>
         </div>
       </motion.header>
 
       <AnimatePresence>
-        {mobileOpen && (
+        {menuOpen && (
           <motion.div
             className="mobile-menu"
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -30 }}
+            initial={{
+              opacity: 0,
+              y: -20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            exit={{
+              opacity: 0,
+              y: -20,
+            }}
           >
             {navLinks.map((link) => (
               <button
                 key={link.id}
-                onClick={() => scrollToSection(link.id)}
+                onClick={() => scrollTo(link.id)}
               >
                 {link.title}
               </button>
             ))}
+
+            <a
+              href={portfolio.resume}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Resume
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
